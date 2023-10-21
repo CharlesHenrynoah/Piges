@@ -8,8 +8,11 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from 'react-router-dom';
+
 
 const Navbar = () => {
+  const [openManagement, setOpenManagement] = useState(false);
   const [openTarif, setOpenTarif] = useState(false);
   const [openAnnonceur, setOpenAnnonceur] = useState(false);
   const [openPiges, setOpenPiges] = useState(false);
@@ -30,9 +33,20 @@ const Navbar = () => {
           <h2>{randomName}</h2>
         </div>
         <List component="nav">
-          <ListItem button>
-            <ListItemText primary="Management" />
+          <ListItem button onClick={() => setOpenManagement(!openManagement)}>
+            <ListItemText primary="🕹️ Management" />
+            {openManagement ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
+          <Collapse in={openManagement} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItem button style={{ paddingLeft: 30 }}>
+                <Link to="/info"><ListItemText primary="🤖 Informations personnelles" /></Link>
+              </ListItem>
+              <ListItem button style={{ paddingLeft: 30 }}>
+                <Link to="/act"><ListItemText primary="📈 Informations activité" /></Link>
+              </ListItem>
+            </List>
+          </Collapse>
           <ListItem button onClick={() => setOpenTarif(!openTarif)}>
             <ListItemText primary="💹 Tableau de grilles tarifaire" />
             {openTarif ? <ExpandLess /> : <ExpandMore />}
@@ -40,10 +54,10 @@ const Navbar = () => {
           <Collapse in={openTarif} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem button style={{ paddingLeft: 30 }}>
-                <ListItemText primary="Création" />
+                <Link to="/creatar"><ListItemText primary="Création 1" /></Link>
               </ListItem>
               <ListItem button style={{ paddingLeft: 30 }}>
-                <ListItemText primary="Consultation & Modification" />
+                <Link to="/consmodtar"><ListItemText primary="Consultation & Modification 1" /></Link>
               </ListItem>
             </List>
           </Collapse>
@@ -54,10 +68,10 @@ const Navbar = () => {
           <Collapse in={openAnnonceur} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem button style={{ paddingLeft: 30 }}>
-                <ListItemText primary="Création" />
+                <Link to="/creatan"><ListItemText primary="Création 2" /></Link>
               </ListItem>
               <ListItem button style={{ paddingLeft: 30 }}>
-                <ListItemText primary="Consultation & Modification" />
+                <Link to="/consmodtan"><ListItemText primary="Consultation & Modification 2" /></Link>
               </ListItem>
             </List>
           </Collapse>
@@ -68,10 +82,10 @@ const Navbar = () => {
           <Collapse in={openPiges} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem button style={{ paddingLeft: 30 }}>
-                <ListItemText primary="Création" />
+                <Link to="/creatpi"><ListItemText primary="Création 3" /></Link>
               </ListItem>
               <ListItem button style={{ paddingLeft: 30 }}>
-                <ListItemText primary="Consultation & Modification" />
+                <Link to="/consmodpi"><ListItemText primary="Consultation & Modification 3" /></Link>
               </ListItem>
             </List>
           </Collapse>
