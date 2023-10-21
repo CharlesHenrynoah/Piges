@@ -1,13 +1,13 @@
 // Piges/piges/src/components/templates/info/info.js
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import Navbar from '../../molecules/nav/nav';
 
 const Info = () => {
-  const { prenom } = useParams();
+
   return (
     <div>
-      <h1>Infos</h1>
-      <p>Hello {`${prenom}`}</p>
+      <h1>Bienvenue sur Informations</h1>
+      <Navbar />
     </div>
   );
 };
