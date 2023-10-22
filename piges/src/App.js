@@ -17,6 +17,7 @@ import { Utilisateur } from '../../piges/src/classes/utilisateurs'; // Import th
 
 export const UserContext = createContext(null);
 
+// Piges/piges/src/App.js
 function App() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || new Utilisateur());
 
@@ -52,9 +53,12 @@ function App() {
     // Affichage du contenu actuel du localStorage pour le débogage
     console.log("Contenu du localStorage :", JSON.stringify(localStorage.getItem('user')));
   }, []);
-  
-  
-  
+
+  // Ajoutez cet effet pour mettre à jour le localStorage chaque fois que l'utilisateur change
+  useEffect(() => {
+    localStorage.setItem('user', JSON.stringify(user));
+  }, [user]);
+;
   
 
   return (

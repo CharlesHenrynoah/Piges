@@ -1,12 +1,14 @@
 // Piges/piges/src/components/molecules/login/loginmol.js
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react'; // Ajoutez useContext
 import { loginUser } from '../../../middleware/loginmid';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../../App'; // Importez UserContext
 
 const LoginMolecule = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { setUser } = useContext(UserContext); // Obtenez setUser du contexte
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -16,9 +18,11 @@ const LoginMolecule = () => {
 
     // Si l'utilisateur est reconnu, rediriger vers la page Info
     // Si l'utilisateur est reconnu, rediriger vers la page Info avec le prénom de l'utilisateur dans l'URL
-  if (user) {
-     navigate(`/info/${user.prenom}`);
+    if (user) {
+      setUser(user); // Mettez à jour l'utilisateur dans le contexte
+      navigate(`/info/${user.prenom}`);
     }
+    console.log(user)
   };
 
   return (

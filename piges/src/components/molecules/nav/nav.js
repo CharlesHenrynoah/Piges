@@ -17,7 +17,7 @@ const Navbar = () => {
   const [openAnnonceur, setOpenAnnonceur] = useState(false);
   const [openPiges, setOpenPiges] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(true); // Set to true for the sidebar to be open by default
-  const { user } = useContext(UserContext); // Obtenez l'utilisateur connecté du contexte
+  const { user } = useContext(UserContext); // Get the current user from context
   console.log("Utilisateur actuel:", user);
 
   
