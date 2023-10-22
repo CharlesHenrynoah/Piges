@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+// Piges/piges/src/components/molecules/nav/nav.js
+import React, { useState, useContext } from 'react';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -9,7 +10,7 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
-
+import { UserContext } from '../../../App';
 
 const Navbar = () => {
   const [openManagement, setOpenManagement] = useState(false);
@@ -17,7 +18,8 @@ const Navbar = () => {
   const [openAnnonceur, setOpenAnnonceur] = useState(false);
   const [openPiges, setOpenPiges] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(true); // Set to true for the sidebar to be open by default
-
+  const { user } = useContext(UserContext); // Obtenez l'utilisateur connecté du contexte
+  
   const toggleDrawer = () => {
     setDrawerOpen(!drawerOpen);
   };
@@ -40,10 +42,10 @@ const Navbar = () => {
           <Collapse in={openManagement} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem button style={{ paddingLeft: 30 }}>
-                <Link to="/info"><ListItemText primary="🤖 Informations personnelles" /></Link>
+              <Link to={`/info/${user ? user.prenom : ''}`}><ListItemText primary="🤖 Informations personnelles" /></Link>
               </ListItem>
               <ListItem button style={{ paddingLeft: 30 }}>
-                <Link to="/act"><ListItemText primary="📈 Informations activité" /></Link>
+              <Link to={`/act/${user ? user.prenom : ''}`}><ListItemText primary="📈 Informations activité" /></Link>
               </ListItem>
             </List>
           </Collapse>
@@ -54,10 +56,10 @@ const Navbar = () => {
           <Collapse in={openTarif} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem button style={{ paddingLeft: 30 }}>
-                <Link to="/creatar"><ListItemText primary="Création 1" /></Link>
+              <Link to={`/creatar/${user ? user.prenom : ''}`}><ListItemText primary="Création 1" /></Link>
               </ListItem>
               <ListItem button style={{ paddingLeft: 30 }}>
-                <Link to="/consmodtar"><ListItemText primary="Consultation & Modification 1" /></Link>
+              <Link to={`/consmodtar/${user ? user.prenom : ''}`}><ListItemText primary="Consultation & Modification 1" /></Link>
               </ListItem>
             </List>
           </Collapse>
@@ -68,10 +70,10 @@ const Navbar = () => {
           <Collapse in={openAnnonceur} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem button style={{ paddingLeft: 30 }}>
-                <Link to="/creatan"><ListItemText primary="Création 2" /></Link>
+              <Link to={`/creatan/${user ? user.prenom : ''}`}><ListItemText primary="Création 2" /></Link>
               </ListItem>
               <ListItem button style={{ paddingLeft: 30 }}>
-                <Link to="/consmodtan"><ListItemText primary="Consultation & Modification 2" /></Link>
+              <Link to={`/consmodtan/${user ? user.prenom : ''}`}><ListItemText primary="Consultation & Modification 2" /></Link>
               </ListItem>
             </List>
           </Collapse>
@@ -82,10 +84,10 @@ const Navbar = () => {
           <Collapse in={openPiges} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem button style={{ paddingLeft: 30 }}>
-                <Link to="/creatpi"><ListItemText primary="Création 3" /></Link>
+              <Link to={`/creatpi/${user ? user.prenom : ''}`}><ListItemText primary="Création 3" /></Link>
               </ListItem>
               <ListItem button style={{ paddingLeft: 30 }}>
-                <Link to="/consmodpi"><ListItemText primary="Consultation & Modification 3" /></Link>
+              <Link to={`/consmodpi/${user ? user.prenom : ''}`}><ListItemText primary="Consultation & Modification 3" /></Link>
               </ListItem>
             </List>
           </Collapse>
