@@ -8,7 +8,7 @@ const Creationan = () => {
 
   return (
     <div>
-      <h1>Bienvenue sur Creation d'Annonceur {prenom}</h1>
+      <h1 style={{ marginLeft: '12%' }}>Bienvenue sur Creation d'Annonceur {prenom}</h1>
       <Navbar />
     </div>
   );

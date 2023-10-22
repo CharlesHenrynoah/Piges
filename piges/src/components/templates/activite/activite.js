@@ -10,7 +10,7 @@ const Activite = () => {
 
   return (
     <div>
-      <h1>Bienvenue sur Activite {prenom}</h1>
+      <h1 style={{ marginLeft: '12%' }}>Bienvenue sur Activite {prenom}</h1>
       <Navbar />
     </div>
   );

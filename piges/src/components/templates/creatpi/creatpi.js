@@ -8,7 +8,7 @@ const Creationpi = () => {
 
   return (
     <div>
-      <h1>Bienvenue sur Création de piges {prenom}</h1>
+      <h1 style={{ marginLeft: '12%' }}>Bienvenue sur Création de piges {prenom}</h1>
       <Navbar />
     </div>
   );
