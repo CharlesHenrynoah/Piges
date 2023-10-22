@@ -1,4 +1,3 @@
-// Piges/piges/src/components/molecules/nav/nav.js
 import React, { useState, useContext } from 'react';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -42,10 +41,10 @@ const Navbar = () => {
           <Collapse in={openManagement} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem button style={{ paddingLeft: 30 }}>
-              <Link to={`/info/${user ? user.prenom : ''}`}><ListItemText primary="🤖 Informations personnelles" /></Link>
+                <Link to={user && user.prenom ? `/info/${user.prenom}` : '/info/default'}><ListItemText primary="🤖 Informations personnelles" /></Link>
               </ListItem>
               <ListItem button style={{ paddingLeft: 30 }}>
-              <Link to={`/act/${user ? user.prenom : ''}`}><ListItemText primary="📈 Informations activité" /></Link>
+                <Link to={user && user.prenom ? `/act/${user.prenom}` : '/act/default'}><ListItemText primary="📈 Informations activité" /></Link>
               </ListItem>
             </List>
           </Collapse>
@@ -56,10 +55,10 @@ const Navbar = () => {
           <Collapse in={openTarif} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem button style={{ paddingLeft: 30 }}>
-              <Link to={`/creatar/${user ? user.prenom : ''}`}><ListItemText primary="Création 1" /></Link>
+                <Link to={user && user.prenom ? `/creatar/${user.prenom}` : '/creatar/default'}><ListItemText primary="Création 1" /></Link>
               </ListItem>
               <ListItem button style={{ paddingLeft: 30 }}>
-              <Link to={`/consmodtar/${user ? user.prenom : ''}`}><ListItemText primary="Consultation & Modification 1" /></Link>
+                <Link to={user && user.prenom ? `/consmodtar/${user.prenom}` : '/consmodtar/default'}><ListItemText primary="Consultation & Modification 1" /></Link>
               </ListItem>
             </List>
           </Collapse>
@@ -70,10 +69,10 @@ const Navbar = () => {
           <Collapse in={openAnnonceur} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem button style={{ paddingLeft: 30 }}>
-              <Link to={`/creatan/${user ? user.prenom : ''}`}><ListItemText primary="Création 2" /></Link>
+                <Link to={user && user.prenom ? `/creatan/${user.prenom}` : '/creatan/default'}><ListItemText primary="Création 2" /></Link>
               </ListItem>
               <ListItem button style={{ paddingLeft: 30 }}>
-              <Link to={`/consmodtan/${user ? user.prenom : ''}`}><ListItemText primary="Consultation & Modification 2" /></Link>
+                <Link to={user && user.prenom ? `/consmodtan/${user.prenom}` : '/consmodtan/default'}><ListItemText primary="Consultation & Modification 2" /></Link>
               </ListItem>
             </List>
           </Collapse>
@@ -84,10 +83,10 @@ const Navbar = () => {
           <Collapse in={openPiges} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem button style={{ paddingLeft: 30 }}>
-              <Link to={`/creatpi/${user ? user.prenom : ''}`}><ListItemText primary="Création 3" /></Link>
+                <Link to={user && user.prenom ? `/creatpi/${user.prenom}` : '/creatpi/default'}><ListItemText primary="Création 3" /></Link>
               </ListItem>
               <ListItem button style={{ paddingLeft: 30 }}>
-              <Link to={`/consmodpi/${user ? user.prenom : ''}`}><ListItemText primary="Consultation & Modification 3" /></Link>
+                <Link to={user && user.prenom ? `/consmodpi/${user.prenom}` : '/consmodpi/default'}><ListItemText primary="Consultation & Modification 3" /></Link>
               </ListItem>
             </List>
           </Collapse>

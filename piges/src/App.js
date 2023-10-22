@@ -21,8 +21,20 @@ function App() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || new Utilisateur());
 
   useEffect(() => {
-    localStorage.setItem('user', JSON.stringify(user));
-  }, [user]);
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+  
+    if (!storedUser || Object.keys(storedUser).length === 0) {
+      const defaultUser = new Utilisateur(/* valeurs par défaut ici */);
+      localStorage.setItem('user', JSON.stringify(defaultUser));
+      setUser(defaultUser);
+    } else {
+      setUser(storedUser);
+    }
+  
+    console.log("Contenu du localStorage :", JSON.stringify(localStorage.getItem('user')));
+  }, []);
+  
+  
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
