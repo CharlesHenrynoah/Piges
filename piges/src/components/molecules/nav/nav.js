@@ -1,3 +1,4 @@
+// Piges/piges/src/components/molecules/nav/nav.js
 import React, { useState, useContext } from 'react';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -19,24 +20,19 @@ const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(true); // Set to true for the sidebar to be open by default
   const { user } = useContext(UserContext); // Get the current user from context
   console.log("Utilisateur actuel:", user);
+  const randomPhotoUrl = "https://source.unsplash.com/random/100x100"; // URL d'une photo aléatoire
 
-  
   const toggleDrawer = () => {
     setDrawerOpen(!drawerOpen);
   };
-  
 
-  
-
-  const randomName = "Prénom Nom"; // Remplacer par la logique de votre choix
-  const randomPhotoUrl = "https://source.unsplash.com/random/100x100"; // Remplacer par la logique de votre choix
 
   return (
     <div style={{ position: 'fixed', zIndex: 1 }}>
       <Drawer variant="permanent" open={drawerOpen}>
         <div style={{ padding: '20px', textAlign: 'center' }}>
-          <img src={randomPhotoUrl} alt="User" style={{ width: '100px', borderRadius: '50%' }} />
-          <h2>{randomName}</h2>
+        <img src={randomPhotoUrl} alt="Utilisateur" style={{ width: '100px', borderRadius: '50%' }} />
+          <h2>{user.prenom} {user.nom}</h2>
         </div>
         <List component="nav">
           <ListItem button onClick={() => setOpenManagement(!openManagement)}>
