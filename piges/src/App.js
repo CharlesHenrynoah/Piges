@@ -21,18 +21,39 @@ function App() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || new Utilisateur());
 
   useEffect(() => {
+    // Récupération de l'utilisateur stocké dans le localStorage
     const storedUser = JSON.parse(localStorage.getItem('user'));
   
+    // Vérification de la validité de l'utilisateur stocké
     if (!storedUser || Object.keys(storedUser).length === 0) {
-      const defaultUser = new Utilisateur(/* valeurs par défaut ici */);
+      // Création d'un utilisateur par défaut
+      const defaultUser = new Utilisateur(
+        null,  // id
+        "Default",  // prenom
+        "User",  // nom
+        "default@email.com",  // mail
+        "password",  // mots_de_passe
+        "default_photo_url",  // photo
+        [],  // tarif_spot_ids
+        [],  // annonceur_ids
+        []  // piges_ids
+      );
+  
+      // Mise à jour du localStorage avec l'utilisateur par défaut
       localStorage.setItem('user', JSON.stringify(defaultUser));
+  
+      // Mise à jour de l'état de l'application avec l'utilisateur par défaut
       setUser(defaultUser);
     } else {
+      // Utilisation de l'utilisateur stocké si valide
       setUser(storedUser);
     }
   
+    // Affichage du contenu actuel du localStorage pour le débogage
     console.log("Contenu du localStorage :", JSON.stringify(localStorage.getItem('user')));
   }, []);
+  
+  
   
   
 

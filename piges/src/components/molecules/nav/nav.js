@@ -18,10 +18,15 @@ const Navbar = () => {
   const [openPiges, setOpenPiges] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(true); // Set to true for the sidebar to be open by default
   const { user } = useContext(UserContext); // Obtenez l'utilisateur connecté du contexte
+  console.log("Utilisateur actuel:", user);
+
   
   const toggleDrawer = () => {
     setDrawerOpen(!drawerOpen);
   };
+  
+
+  
 
   const randomName = "Prénom Nom"; // Remplacer par la logique de votre choix
   const randomPhotoUrl = "https://source.unsplash.com/random/100x100"; // Remplacer par la logique de votre choix
